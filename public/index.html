@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monkey Stars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .telegram-login {
+            margin: 30px 0;
+        }
+        .features {
+            text-align: left;
+            margin-top: 30px;
+            color: #666;
+        }
+        .feature-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐵 Monkey Stars</h1>
+        <p>Виртуальная игра с внутренней валютой STAR</p>
+        
+        <div class="telegram-login">
+            <script async 
+                src="https://telegram.org/js/telegram-widget.js?22" 
+                data-telegram-login="MonkeyStarsBot" 
+                data-size="large" 
+                data-auth-url="/api/login" 
+                data-request-access="write">
+            </script>
+        </div>
+        
+        <div class="features">
+            <h3>🎮 Что вас ждет:</h3>
+            <div class="feature-item">Зарабатывайте STAR в кликере</div>
+            <div class="feature-item">Играйте в азартные игры с высокой отдачей</div>
+            <div class="feature-item">Приглашайте друзей и получайте бонусы</div>
+            <div class="feature-item">Выводите заработанные средства</div>
+            <div class="feature-item">Получайте 10% от дохода рефералов</div>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 12px; color: #999;">
+            Для полного доступа к функциям используйте Telegram бота: @MonkeyStarsBot
+        </p>
+    </div>
+    
+    <script>
+        // После успешного входа перенаправляем на игры
+        function onTelegramAuth(user) {
+            document.cookie = `user_id=${user.id}; path=/; max-age=2592000`;
+            document.cookie = `username=${user.username || user.first_name}; path=/; max-age=2592000`;
+            window.location.href = '/games.html';
+        }
+    </script>
+</body>
+</html>
